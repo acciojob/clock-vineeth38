@@ -1,14 +1,25 @@
 //your JS code here. If required.
-var today = new Date();
-  var day = today.getDay();
-  var daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
-  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  var dateTime = date+' '+time;
-   
-  document.getElementById("timer").innerHTML = dateTime + ' <br> Day :- ' + daylist[day];
- 
-  </script>
-</html>
-
-   
+function getTime(){
+	const time = new Date();
+	let dayString = '${time.getMonth()+1}/${time.getDate()}/${time.getFullYear()}';
+	let hr = time.getHours();
+	let timeString="";
+	if(hr>=12){
+		if(hr===12){
+			timeString='${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}PM'
+		}
+		else{
+			h-=12;
+			timeString='${hr}:${time.getMinutes()}:${time.getSeconds()}PM'
+		}
+	}
+	else{
+		timeString='${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}AM'
+	}
+	return dayString+","+timeString;
+}
+const p = document.getElementBYId("timer");
+function timer() {
+	p.innerText = getTime();
+}
+setInterval(timer,1000);
